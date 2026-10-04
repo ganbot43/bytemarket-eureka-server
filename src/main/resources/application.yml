@@ -1,0 +1,16 @@
+server:
+  port: ${EUREKA_PORT:8761}
+
+spring:
+  application:
+    name: bytemarket-eureka-server
+  profiles:
+    active: ${SPRING_PROFILE:local}
+
+eureka:
+  client:
+    # Es el propio registro: no se registra en sí mismo ni se descarga a sí mismo.
+    register-with-eureka: false
+    fetch-registry: false
+    service-url:
+      defaultZone: http://localhost:${EUREKA_PORT:8761}/eureka/
