@@ -19,16 +19,16 @@ No usa base de datos, ni S3, ni JWT, ni mensajería.
 
 ## Cómo levantarlo
 
-Requisitos: **Java 17+**, **MySQL 8** en `localhost:3306` y el
-`bytemarket-eureka-server` ya arrancado (salvo que este repo *sea* Eureka).
+Requisitos: **Java 17+**. No usa base de datos ni depende de ningún otro
+servicio: es el primero que hay que levantar.
 
 ```bash
 cp .env.example .env     # y rellena los valores
 ./mvnw spring-boot:run
 ```
 
-Queda escuchando en el puerto **8761**. El esquema de base de datos se crea
-solo al arrancar (`createDatabaseIfNotExist=true`).
+Queda escuchando en el puerto **8761**. Panel web en http://localhost:8761
+
 
 ## Configuración
 
