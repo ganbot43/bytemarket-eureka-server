@@ -19,13 +19,38 @@ No usa base de datos, ni S3, ni JWT, ni mensajería.
 
 ## Cómo levantarlo
 
+### Con Docker (recomendado)
+
+Este servicio es una pieza del sistema; lo normal es levantarlo junto a los
+demás desde la carpeta padre, que trae el `docker-compose.yml`:
+
+```bash
+cd ..
+docker compose up -d
+```
+
+Para ver solo su log o reiniciarlo:
+
+```bash
+docker compose logs -f eureka
+docker compose restart eureka
+```
+
+El `Dockerfile` de este repo es multietapa: compila con Maven y la imagen
+final solo lleva el JRE y el jar. No hace falta empaquetar antes.
+
+### A mano
+
 Requisitos: **Java 17+**. No usa base de datos ni depende de ningún otro
 servicio: es el primero que hay que levantar.
 
 ```bash
-cp .env.example .env     # y rellena los valores
 ./mvnw spring-boot:run
 ```
+
+> Este servicio no lee ningún `.env`: no necesita credenciales. Su puerto
+> sale de `EUREKA_PORT`, con 8761 por defecto.
+
 
 Queda escuchando en el puerto **8761**. Panel web en http://localhost:8761
 
